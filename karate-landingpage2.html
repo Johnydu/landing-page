@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bushido Karatê — Disciplina, Respeito, Excelência</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red: #C0261D;
+      --red-dark: #8B1A13;
+      --black: #141010;
+      --white: #FAFAF8;
+      --gray: #6B6360;
+      --gray-light: #F2EEE9;
+      --nav-h: 60px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Zen Kaku Gothic New', sans-serif; background: var(--white); color: var(--black); overflow-x: hidden; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      height: var(--nav-h);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 1.5rem;
+      background: rgba(20,16,16,0.97);
+    }
+    .nav-logo { font-family: 'Noto Serif JP', serif; font-size: 1rem; font-weight: 900; color: var(--white); white-space: nowrap; }
+    .nav-logo span { color: var(--red); }
+    .nav-desktop { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-desktop ul { display: flex; gap: 1.25rem; list-style: none; }
+    .nav-desktop a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.82rem; letter-spacing: 0.05em; text-transform: uppercase; }
+    .nav-desktop a:hover { color: var(--red); }
+    .nav-cta { background: var(--red); color: white; padding: 0.4rem 1rem; border-radius: 2px; font-size: 0.82rem; font-weight: 700; text-decoration: none; text-transform: uppercase; white-space: nowrap; }
+    .nav-cta:hover { background: var(--red-dark); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 6px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: white; }
+
+    /* MENU MOBILE */
+    .mobile-menu {
+      display: none; position: fixed;
+      top: var(--nav-h); left: 0; right: 0; z-index: 190;
+      background: #141010;
+      flex-direction: column;
+      padding: 0.5rem 1.5rem 1.5rem;
+    }
+    .mobile-menu.aberto { display: flex; }
+    .mobile-menu a {
+      color: rgba(255,255,255,0.8); text-decoration: none;
+      font-size: 0.95rem; padding: 0.9rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .mobile-menu .m-cta {
+      margin-top: 1rem;
+      background: var(--red); color: white;
+      text-align: center; padding: 0.85rem;
+      border-radius: 2px; font-weight: 700; border-bottom: none;
+    }
+
+    /* HERO */
+    #hero {
+      background: var(--black);
+      padding: calc(var(--nav-h) + 3rem) 1.5rem 3.5rem;
+      border-left: 4px solid var(--red);
+    }
+    .hero-inner { max-width: 700px; }
+    .hero-badge {
+      display: inline-block; font-size: 0.7rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--red); border: 1px solid var(--red);
+      padding: 0.28rem 0.8rem; margin-bottom: 1.5rem; border-radius: 1px;
+    }
+    #hero h1 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(2rem, 6vw, 3.6rem);
+      font-weight: 900; color: white; line-height: 1.15; margin-bottom: 1rem;
+    }
+    #hero h1 span { color: var(--red); }
+    #hero .hero-desc { font-size: 0.95rem; line-height: 1.8; color: rgba(255,255,255,0.6); margin-bottom: 2rem; max-width: 480px; }
+    .hero-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 3rem; }
+    .hero-stats { display: flex; gap: 2rem; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; }
+    .stat-num { font-family: 'Noto Serif JP', serif; font-size: 1.8rem; font-weight: 900; color: var(--red); display: block; }
+    .stat-label { font-size: 0.7rem; color: rgba(255,255,255,0.45); letter-spacing: 0.1em; text-transform: uppercase; }
+
+    /* BOTÕES */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      background: var(--red); color: white;
+      padding: 0.8rem 1.5rem; border-radius: 2px;
+      font-weight: 700; font-size: 0.9rem; text-decoration: none;
+    }
+    .btn-primary:hover { background: var(--red-dark); }
+    .btn-outline {
+      display: inline-flex; align-items: center;
+      border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.8);
+      padding: 0.8rem 1.5rem; border-radius: 2px;
+      font-size: 0.9rem; text-decoration: none;
+    }
+    .btn-outline:hover { border-color: var(--red); color: var(--red); }
+    .btn-white {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: white; color: var(--red);
+      padding: 0.9rem 2rem; border-radius: 2px;
+      font-weight: 700; font-size: 0.95rem; text-decoration: none;
+    }
+    .btn-white:hover { opacity: 0.92; }
+
+    /* SEÇÕES */
+    .secao { padding: 4rem 1.5rem; }
+    .secao-inner { max-width: 1100px; margin: 0 auto; }
+    .secao-label { display: block; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 0.6rem; }
+    .secao-titulo { font-family: 'Noto Serif JP', serif; font-size: clamp(1.6rem, 3vw, 2.3rem); font-weight: 900; line-height: 1.2; margin-bottom: 0.5rem; }
+
+    /* SOBRE */
+    #sobre { background: var(--white); }
+    .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; margin-top: 2.5rem; }
+    .sobre-texto p { font-size: 0.95rem; line-height: 1.9; color: var(--gray); margin-bottom: 0.9rem; }
+    .pilares { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .pilar { background: var(--gray-light); padding: 1.1rem; border-left: 3px solid var(--red); }
+    .pilar-icone { font-size: 1.4rem; margin-bottom: 0.35rem; }
+    .pilar h4 { font-weight: 700; font-size: 0.88rem; margin-bottom: 0.2rem; }
+    .pilar p { font-size: 0.8rem; color: var(--gray); line-height: 1.5; }
+
+    /* AULA GRÁTIS */
+    #aula { background: var(--red); text-align: center; }
+    #aula h2 { font-family: 'Noto Serif JP', serif; font-size: clamp(1.6rem, 4vw, 2.6rem); font-weight: 900; color: white; margin-bottom: 0.9rem; }
+    #aula p { color: rgba(255,255,255,0.85); font-size: 0.95rem; margin-bottom: 1.75rem; line-height: 1.7; }
+
+    /* PLANOS */
+    #planos { background: var(--gray-light); }
+    .planos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
+    .plano { background: white; padding: 1.75rem; border: 1px solid rgba(0,0,0,0.08); }
+    .plano.destaque { border: 2px solid var(--red); }
+    .plano-badge { display: inline-block; background: var(--red); color: white; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.22rem 0.7rem; border-radius: 20px; margin-bottom: 0.75rem; }
+    .plano-nome { font-family: 'Noto Serif JP', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .plano-preco { font-size: 2rem; font-weight: 900; color: var(--red); line-height: 1; margin-bottom: 0.2rem; }
+    .plano-preco span { font-size: 0.95rem; font-weight: 400; color: var(--gray); }
+    .plano-desc { font-size: 0.82rem; color: var(--gray); margin-bottom: 1.1rem; }
+    .plano ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .plano li { font-size: 0.85rem; color: var(--gray); display: flex; align-items: center; gap: 0.45rem; }
+    .plano li::before { content: ''; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--red); flex-shrink: 0; }
+
+    /* HORÁRIOS */
+    #horarios { background: var(--white); }
+    .horarios-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 0.75rem; margin-top: 2.5rem; }
+    .dia { border: 1px solid rgba(0,0,0,0.09); overflow: hidden; }
+    .dia-header { background: var(--black); color: white; text-align: center; padding: 0.5rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .dia.vermelho .dia-header { background: var(--red); }
+    .dia-body { padding: 0.65rem; }
+    .turma { margin-bottom: 0.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(0,0,0,0.06); }
+    .turma:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .turma-hora { font-size: 0.76rem; font-weight: 700; color: var(--red); }
+    .turma-nome { font-size: 0.72rem; color: var(--gray); }
+    .dia-fechado { text-align: center; padding: 1rem 0.5rem; font-size: 0.75rem; color: rgba(0,0,0,0.28); font-style: italic; }
+
+    /* CONTATO */
+    #contato { background: var(--black); text-align: center; }
+    #contato .secao-label { color: var(--red); }
+    #contato h2 { font-family: 'Noto Serif JP', serif; font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 900; color: white; margin-bottom: 0.9rem; }
+    #contato .cont-desc { color: rgba(255,255,255,0.55); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.75rem; }
+    .contato-infos { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .contato-item strong { color: white; display: block; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.2rem; }
+    .contato-item { color: rgba(255,255,255,0.7); font-size: 0.88rem; }
+
+    /* FOOTER */
+    footer { background: #0D0A0A; color: rgba(255,255,255,0.3); text-align: center; padding: 1.25rem; font-size: 0.78rem; }
+    footer span { color: var(--red); }
+
+    /* FLOATING WHATSAPP */
+    .float-wpp {
+      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 999;
+      background: #25D366; width: 54px; height: 54px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 3px 14px rgba(37,211,102,0.45); text-decoration: none;
+      transition: transform 0.2s;
+    }
+    .float-wpp:hover { transform: scale(1.1); }
+    .float-wpp svg { width: 27px; height: 27px; }
+
+    /* ÍCONE WHATSAPP SVG reutilizável */
+    .wpp-path { fill: currentColor; }
+
+    /* DESKTOP: esconde hamburger e menu mobile */
+    @media (min-width: 900px) {
+      .hamburger { display: none; }
+      .mobile-menu { display: none !important; }
+      .nav-desktop { display: flex; }
+    }
+
+    /* MOBILE: esconde nav desktop, mostra hamburger */
+    @media (max-width: 899px) {
+      .nav-desktop { display: none; }
+      .hamburger { display: flex; }
+      #hero { border-left: none; border-top: 4px solid var(--red); }
+      .sobre-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .pilares { grid-template-columns: 1fr 1fr; }
+      .hero-stats { gap: 1.5rem; }
+      .contato-infos { flex-direction: column; align-items: center; gap: 1rem; }
+    }
+
+    @media (max-width: 480px) {
+      .pilares { grid-template-columns: 1fr; }
+      .hero-btns { flex-direction: column; }
+      .hero-btns a { text-align: center; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">武道 <span>Bushido</span> Karatê</div>
+  <div class="nav-desktop">
+    <ul>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#planos">Planos</a></li>
+      <li><a href="#horarios">Horários</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <a class="nav-cta" href="https://wa.me/5511999999999?text=Olá!%20Quero%20agendar%20uma%20aula%20experimental%20gratuita." target="_blank">Aula Grátis</a>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MENU MOBILE -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#sobre" onclick="fecharMenu()">Sobre</a>
+  <a href="#planos" onclick="fecharMenu()">Planos</a>
+  <a href="#horarios" onclick="fecharMenu()">Horários</a>
+  <a href="#contato" onclick="fecharMenu()">Contato</a>
+  <a class="m-cta" href="https://wa.me/5511999999999?text=Olá!%20Quero%20agendar%20uma%20aula%20experimental%20gratuita." target="_blank">Agendar Aula Grátis</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Arte marcial tradicional japonesa</div>
+    <h1>Disciplina que<br>transforma<br><span>vidas.</span></h1>
+    <p class="hero-desc">Venha descobrir o karatê. Crianças, jovens e adultos de todos os níveis são bem-vindos. Primeira aula totalmente gratuita.</p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="https://wa.me/5511999999999?text=Olá!%20Quero%20agendar%20minha%20aula%20experimental%20gratuita." target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Agendar Aula Gratuita
+      </a>
+      <a class="btn-outline" href="#planos">Ver Planos</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">15+</span><span class="stat-label">Anos de experiência</span></div>
+      <div class="stat"><span class="stat-num">200+</span><span class="stat-label">Alunos formados</span></div>
+      <div class="stat"><span class="stat-num">3</span><span class="stat-label">Faixas pretas</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre" class="secao">
+  <div class="secao-inner">
+    <span class="secao-label">Nossa academia</span>
+    <h2 class="secao-titulo">Mais do que luta.<br>Uma filosofia de vida.</h2>
+    <div class="sobre-grid">
+      <div class="sobre-texto">
+        <p>A Bushido Karatê foi fundada com uma missão clara: levar os ensinamentos do karatê shotokan para todos, do iniciante ao avançado, da criança ao adulto.</p>
+        <p>Nossos professores são faixas pretas experientes e apaixonados pelo que fazem. Aqui você aprende técnica, desenvolve concentração e ganha confiança — dentro e fora do tatame.</p>
+        <p>Acreditamos que o karatê é para todos. Por isso oferecemos turmas separadas por faixa etária e nível, garantindo que cada aluno evolua no seu ritmo.</p>
+      </div>
+      <div class="pilares">
+        <div class="pilar"><div class="pilar-icone">🥋</div><h4>Técnica</h4><p>Fundamentos corretos desde o primeiro dia.</p></div>
+        <div class="pilar"><div class="pilar-icone">🎯</div><h4>Disciplina</h4><p>Foco que se aplica à vida toda.</p></div>
+        <div class="pilar"><div class="pilar-icone">🤝</div><h4>Respeito</h4><p>Um dos pilares do karatê tradicional.</p></div>
+        <div class="pilar"><div class="pilar-icone">💪</div><h4>Condicionamento</h4><p>Força e agilidade de forma equilibrada.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AULA GRÁTIS -->
+<section id="aula" class="secao">
+  <div class="secao-inner" style="text-align:center;">
+    <h2>Sua primeira aula é gratuita.</h2>
+    <p>Venha conhecer a academia sem compromisso.<br>Traje confortável e vontade de aprender é tudo que você precisa trazer.</p>
+    <a class="btn-white" href="https://wa.me/5511999999999?text=Olá!%20Quero%20agendar%20minha%20aula%20experimental%20gratuita." target="_blank">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="#C0261D"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Agendar pelo WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- PLANOS -->
+<section id="planos" class="secao">
+  <div class="secao-inner">
+    <span class="secao-label">Planos e mensalidades</span>
+    <h2 class="secao-titulo">Escolha o plano ideal para você.</h2>
+    <div class="planos-grid">
+      <div class="plano">
+        <div class="plano-nome">Infantil</div>
+        <div class="plano-preco">R$ 120<span>/mês</span></div>
+        <div class="plano-desc">Para crianças de 5 a 12 anos</div>
+        <ul>
+          <li>2 aulas por semana</li>
+          <li>Turmas por faixa etária</li>
+          <li>Foco em coordenação motora</li>
+          <li>Acompanhamento individualizado</li>
+        </ul>
+      </div>
+      <div class="plano destaque">
+        <div class="plano-badge">Mais popular</div>
+        <div class="plano-nome">Adulto — 3x</div>
+        <div class="plano-preco">R$ 180<span>/mês</span></div>
+        <div class="plano-desc">Para adolescentes e adultos</div>
+        <ul>
+          <li>3 aulas por semana</li>
+          <li>Todos os níveis</li>
+          <li>Preparação para graduação</li>
+          <li>Treino de kata e kumite</li>
+          <li>Acesso ao grupo de alunos</li>
+        </ul>
+      </div>
+      <div class="plano">
+        <div class="plano-nome">Família</div>
+        <div class="plano-preco">R$ 280<span>/mês</span></div>
+        <div class="plano-desc">Para 2 ou mais membros da família</div>
+        <ul>
+          <li>Aulas ilimitadas</li>
+          <li>Até 3 integrantes</li>
+          <li>Turmas separadas por nível</li>
+          <li>Desconto em uniformes</li>
+          <li>Prioridade em eventos</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HORÁRIOS -->
+<section id="horarios" class="secao">
+  <div class="secao-inner">
+    <span class="secao-label">Grade de treinos</span>
+    <h2 class="secao-titulo">Horários e turmas</h2>
+    <div class="horarios-grid">
+      <div class="dia vermelho">
+        <div class="dia-header">Segunda</div>
+        <div class="dia-body">
+          <div class="turma"><div class="turma-hora">08:00</div><div class="turma-nome">Adultos Iniciante</div></div>
+          <div class="turma"><div class="turma-hora">18:00</div><div class="turma-nome">Infantil</div></div>
+          <div class="turma"><div class="turma-hora">19:30</div><div class="turma-nome">Adultos Avançado</div></div>
+        </div>
+      </div>
+      <div class="dia">
+        <div class="dia-header">Terça</div>
+        <div class="dia-body">
+          <div class="turma"><div class="turma-hora">07:00</div><div class="turma-nome">Adultos Todos os níveis</div></div>
+          <div class="turma"><div class="turma-hora">17:30</div><div class="turma-nome">Infantil</div></div>
+        </div>
+      </div>
+      <div class="dia vermelho">
+        <div class="dia-header">Quarta</div>
+        <div class="dia-body">
+          <div class="turma"><div class="turma-hora">08:00</div><div class="turma-nome">Adultos Iniciante</div></div>
+          <div class="turma"><div class="turma-hora">18:00</div><div class="turma-nome">Infantil</div></div>
+          <div class="turma"><div class="turma-hora">19:30</div><div class="turma-nome">Adultos Avançado</div></div>
+        </div>
+      </div>
+      <div class="dia">
+        <div class="dia-header">Quinta</div>
+        <div class="dia-body">
+          <div class="turma"><div class="turma-hora">07:00</div><div class="turma-nome">Adultos Todos os níveis</div></div>
+          <div class="turma"><div class="turma-hora">17:30</div><div class="turma-nome">Infantil</div></div>
+        </div>
+      </div>
+      <div class="dia vermelho">
+        <div class="dia-header">Sexta</div>
+        <div class="dia-body">
+          <div class="turma"><div class="turma-hora">08:00</div><div class="turma-nome">Adultos Todos os níveis</div></div>
+          <div class="turma"><div class="turma-hora">18:00</div><div class="turma-nome">Infantil</div></div>
+          <div class="turma"><div class="turma-hora">19:30</div><div class="turma-nome">Adultos Kumite</div></div>
+        </div>
+      </div>
+      <div class="dia">
+        <div class="dia-header">Sábado</div>
+        <div class="dia-body">
+          <div class="turma"><div class="turma-hora">09:00</div><div class="turma-nome">Treino livre — Todos</div></div>
+        </div>
+      </div>
+      <div class="dia">
+        <div class="dia-header">Domingo</div>
+        <div class="dia-body"><div class="dia-fechado">Fechado</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato" class="secao">
+  <div class="secao-inner">
+    <span class="secao-label">Fale conosco</span>
+    <h2>Pronto para começar sua jornada?</h2>
+    <p class="cont-desc">Entre em contato pelo WhatsApp e agende sua aula experimental gratuita.<br>Sem compromisso, sem taxa de matrícula na primeira visita.</p>
+    <div class="contato-infos">
+      <div class="contato-item"><strong>Endereço</strong>Rua das Flores, 123 — Centro</div>
+      <div class="contato-item"><strong>WhatsApp</strong>(11) 99999-9999</div>
+      <div class="contato-item"><strong>Funcionamento</strong>Segunda a Sábado</div>
+    </div>
+    <div style="text-align:center;">
+      <a class="btn-primary" href="https://wa.me/5511999999999?text=Olá!%20Quero%20agendar%20minha%20aula%20experimental%20gratuita." target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Falar no WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>© 2025 <span>Bushido Karatê</span> — Todos os direitos reservados.</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a class="float-wpp" href="https://wa.me/5511999999999?text=Olá!%20Quero%20agendar%20minha%20aula%20experimental%20gratuita." target="_blank" title="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('aberto');
+  }
+  function fecharMenu() {
+    document.getElementById('mobileMenu').classList.remove('aberto');
+  }
+</script>
+</body>
+</html>
