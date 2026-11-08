@@ -26,6 +26,10 @@ O objetivo principal é aumentar a captação de alunos por meio de uma experiê
 - ✅ Botão flutuante de contato
 - ✅ Scroll suave entre seções
 - ✅ Layout moderno inspirado na cultura japonesa
+- ✅ Acessibilidade: HTML semântico, contraste WCAG AA, foco visível, navegação por teclado e respeito a `prefers-reduced-motion`
+- ✅ Meta tags de descrição e Open Graph, favicon em SVG
+
+> **Conteúdo de exemplo:** o nome da academia, os números do hero, preços, horários, endereço e o WhatsApp `5511999999999` são fictícios. Substitua pelos dados reais antes de usar a página.
 
 ---
 
@@ -41,15 +45,16 @@ O objetivo principal é aumentar a captação de alunos por meio de uma experiê
 ## 📂 Estrutura do Projeto
 
 ```text
-bushido-karate/
+landing-page/
 │
 ├── index.html
 ├── README.md
+├── LICENSE
 │
 └── assets/
-    ├── images/
-    ├── icons/
-    └── screenshots/
+    ├── styles.css
+    ├── script.js
+    └── favicon.svg
 ```
 
 ---
@@ -98,13 +103,13 @@ O projeto foi desenvolvido seguindo o conceito Mobile First e adapta-se automati
 Clone o repositório:
 
 ```bash
-git clone https://github.com/seu-usuario/bushido-karate.git
+git clone https://github.com/Johnydu/landing-page.git
 ```
 
 Entre na pasta:
 
 ```bash
-cd bushido-karate
+cd landing-page
 ```
 
 Abra o arquivo:

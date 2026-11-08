@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bushido Karatê — Disciplina, Respeito, Excelência</title>
+  <meta name="description" content="Landing page de uma academia de karatê tradicional: turmas para crianças, jovens e adultos, planos, grade de horários e agendamento de aula experimental gratuita pelo WhatsApp." />
+  <meta name="theme-color" content="#141010" />
+  <meta name="author" content="Johny Duarte" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content="Bushido Karatê" />
+  <meta property="og:title" content="Bushido Karatê — Disciplina que transforma vidas" />
+  <meta property="og:description" content="Karatê para crianças, jovens e adultos. Agende sua aula experimental gratuita pelo WhatsApp." />
+  <meta name="twitter:card" content="summary" />
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script src="assets/script.js" defer></script>
+</head>
+<body>
+
+<!-- Ícone do WhatsApp, reaproveitado pelos botões via <use> -->
+<svg width="0" height="0" class="sr-only" aria-hidden="true" focusable="false">
+  <symbol id="icone-whatsapp" viewBox="0 0 24 24">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </symbol>
+</svg>
+
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="site-header">
+  <nav class="nav" aria-label="Principal">
+    <a class="nav-logo" href="#inicio"><span lang="ja" aria-hidden="true">武道</span> <span class="destaque">Bushido</span> Karatê</a>
+
+    <div class="nav-desktop">
+      <ul>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#planos">Planos</a></li>
+        <li><a href="#horarios">Horários</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+      <a class="nav-cta" href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Quero%20agendar%20uma%20aula%20experimental%20gratuita." target="_blank" rel="noopener noreferrer">Aula grátis<span class="sr-only"> (abre o WhatsApp em nova aba)</span></a>
+    </div>
+
+    <button class="hamburger" id="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-mobile" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="menu-mobile" hidden>
+    <ul>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#planos">Planos</a></li>
+      <li><a href="#horarios">Horários</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <a class="m-cta" href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Quero%20agendar%20uma%20aula%20experimental%20gratuita." target="_blank" rel="noopener noreferrer">Agendar aula grátis<span class="sr-only"> (abre o WhatsApp em nova aba)</span></a>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <!-- HERO -->
+  <section class="hero" id="inicio" aria-labelledby="hero-titulo">
+    <div class="hero-inner">
+      <div class="hero-texto">
+        <p class="hero-badge">Arte marcial tradicional japonesa</p>
+        <h1 id="hero-titulo">Disciplina que<br />transforma<br /><span>vidas.</span></h1>
+        <p class="hero-desc">Venha descobrir o karatê. Crianças, jovens e adultos de todos os níveis são bem-vindos. Primeira aula totalmente gratuita.</p>
+        <div class="hero-btns">
+          <a class="btn btn-primary" href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Quero%20agendar%20minha%20aula%20experimental%20gratuita." target="_blank" rel="noopener noreferrer">
+            <svg aria-hidden="true" focusable="false"><use href="#icone-whatsapp" /></svg>
+            Agendar aula gratuita<span class="sr-only"> (abre o WhatsApp em nova aba)</span>
+          </a>
+          <a class="btn btn-outline" href="#planos">Ver planos</a>
+        </div>
+        <dl class="hero-stats">
+          <div class="stat"><dt>Anos de experiência</dt><dd>15+</dd></div>
+          <div class="stat"><dt>Alunos formados</dt><dd>200+</dd></div>
+          <div class="stat"><dt>Faixas pretas</dt><dd>3</dd></div>
+        </dl>
+        <p class="nota-exemplo">* Números ilustrativos — substitua pelos dados reais da academia.</p>
+      </div>
+
+      <figure class="hero-arte" aria-hidden="true">
+        <svg class="enso" viewBox="0 0 400 400" focusable="false">
+          <circle class="enso-eco" cx="200" cy="200" r="192" />
+          <path class="enso-traco" stroke-width="18" d="M294.6 64.8 A165 165 0 1 1 242.7 40.6" />
+          <path class="enso-traco" stroke-width="3" opacity="0.55" d="M300 78 A150 150 0 1 1 236 54" />
+        </svg>
+        <span class="hero-arte-kanji" lang="ja">空手道</span>
+        <figcaption>Karatê-dō · o caminho das mãos vazias</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section class="secao sobre" id="sobre" aria-labelledby="sobre-titulo">
+    <div class="secao-inner reveal">
+      <p class="secao-label">Nossa academia</p>
+      <h2 class="secao-titulo" id="sobre-titulo">Mais do que luta.<br />Uma filosofia de vida.</h2>
+      <div class="sobre-grid">
+        <div class="sobre-texto">
+          <p>A Bushido Karatê foi fundada com uma missão clara: levar os ensinamentos do karatê shotokan para todos, do iniciante ao avançado, da criança ao adulto.</p>
+          <p>Nossos professores são faixas pretas experientes e apaixonados pelo que fazem. Aqui você aprende técnica, desenvolve concentração e ganha confiança — dentro e fora do tatame.</p>
+          <p>Acreditamos que o karatê é para todos. Por isso oferecemos turmas separadas por faixa etária e nível, garantindo que cada aluno evolua no seu ritmo.</p>
+        </div>
+        <ul class="pilares" aria-label="Pilares da academia">
+          <li class="pilar"><span class="pilar-icone" aria-hidden="true">🥋</span><h3>Técnica</h3><p>Fundamentos corretos desde o primeiro dia.</p></li>
+          <li class="pilar"><span class="pilar-icone" aria-hidden="true">🎯</span><h3>Disciplina</h3><p>Foco que se aplica à vida toda.</p></li>
+          <li class="pilar"><span class="pilar-icone" aria-hidden="true">🤝</span><h3>Respeito</h3><p>Um dos pilares do karatê tradicional.</p></li>
+          <li class="pilar"><span class="pilar-icone" aria-hidden="true">💪</span><h3>Condicionamento</h3><p>Força e agilidade de forma equilibrada.</p></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- AULA GRÁTIS -->
+  <section class="secao aula" id="aula" aria-labelledby="aula-titulo">
+    <div class="secao-inner reveal">
+      <h2 id="aula-titulo">Sua primeira aula é gratuita.</h2>
+      <p>Venha conhecer a academia sem compromisso. Traje confortável e vontade de aprender é tudo que você precisa trazer.</p>
+      <a class="btn btn-white" href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Quero%20agendar%20minha%20aula%20experimental%20gratuita." target="_blank" rel="noopener noreferrer">
+        <svg aria-hidden="true" focusable="false"><use href="#icone-whatsapp" /></svg>
+        Agendar pelo WhatsApp<span class="sr-only"> (abre em nova aba)</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- PLANOS -->
+  <section class="secao planos" id="planos" aria-labelledby="planos-titulo">
+    <div class="secao-inner reveal">
+      <p class="secao-label">Planos e mensalidades</p>
+      <h2 class="secao-titulo" id="planos-titulo">Escolha o plano ideal para você.</h2>
+      <div class="planos-grid">
+        <article class="plano" aria-labelledby="plano-infantil">
+          <h3 id="plano-infantil">Infantil</h3>
+          <p class="plano-preco">R$ 120<span>/mês</span></p>
+          <p class="plano-desc">Para crianças de 5 a 12 anos</p>
+          <ul>
+            <li>2 aulas por semana</li>
+            <li>Turmas por faixa etária</li>
+            <li>Foco em coordenação motora</li>
+            <li>Acompanhamento individualizado</li>
+          </ul>
+        </article>
+        <article class="plano destaque" aria-labelledby="plano-adulto">
+          <p class="plano-badge">Mais popular</p>
+          <h3 id="plano-adulto">Adulto — 3x</h3>
+          <p class="plano-preco">R$ 180<span>/mês</span></p>
+          <p class="plano-desc">Para adolescentes e adultos</p>
+          <ul>
+            <li>3 aulas por semana</li>
+            <li>Todos os níveis</li>
+            <li>Preparação para graduação</li>
+            <li>Treino de kata e kumite</li>
+            <li>Acesso ao grupo de alunos</li>
+          </ul>
+        </article>
+        <article class="plano" aria-labelledby="plano-familia">
+          <h3 id="plano-familia">Família</h3>
+          <p class="plano-preco">R$ 280<span>/mês</span></p>
+          <p class="plano-desc">Para 2 ou mais membros da família</p>
+          <ul>
+            <li>Aulas ilimitadas</li>
+            <li>Até 3 integrantes</li>
+            <li>Turmas separadas por nível</li>
+            <li>Desconto em uniformes</li>
+            <li>Prioridade em eventos</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- HORÁRIOS -->
+  <section class="secao horarios" id="horarios" aria-labelledby="horarios-titulo">
+    <div class="secao-inner reveal">
+      <p class="secao-label">Grade de treinos</p>
+      <h2 class="secao-titulo" id="horarios-titulo">Horários e turmas</h2>
+      <ul class="horarios-grid">
+        <li class="dia vermelho">
+          <h3>Segunda</h3>
+          <ul>
+            <li class="turma"><time datetime="08:00">08:00</time><span>Adultos iniciante</span></li>
+            <li class="turma"><time datetime="18:00">18:00</time><span>Infantil</span></li>
+            <li class="turma"><time datetime="19:30">19:30</time><span>Adultos avançado</span></li>
+          </ul>
+        </li>
+        <li class="dia">
+          <h3>Terça</h3>
+          <ul>
+            <li class="turma"><time datetime="07:00">07:00</time><span>Adultos todos os níveis</span></li>
+            <li class="turma"><time datetime="17:30">17:30</time><span>Infantil</span></li>
+          </ul>
+        </li>
+        <li class="dia vermelho">
+          <h3>Quarta</h3>
+          <ul>
+            <li class="turma"><time datetime="08:00">08:00</time><span>Adultos iniciante</span></li>
+            <li class="turma"><time datetime="18:00">18:00</time><span>Infantil</span></li>
+            <li class="turma"><time datetime="19:30">19:30</time><span>Adultos avançado</span></li>
+          </ul>
+        </li>
+        <li class="dia">
+          <h3>Quinta</h3>
+          <ul>
+            <li class="turma"><time datetime="07:00">07:00</time><span>Adultos todos os níveis</span></li>
+            <li class="turma"><time datetime="17:30">17:30</time><span>Infantil</span></li>
+          </ul>
+        </li>
+        <li class="dia vermelho">
+          <h3>Sexta</h3>
+          <ul>
+            <li class="turma"><time datetime="08:00">08:00</time><span>Adultos todos os níveis</span></li>
+            <li class="turma"><time datetime="18:00">18:00</time><span>Infantil</span></li>
+            <li class="turma"><time datetime="19:30">19:30</time><span>Adultos kumite</span></li>
+          </ul>
+        </li>
+        <li class="dia">
+          <h3>Sábado</h3>
+          <ul>
+            <li class="turma"><time datetime="09:00">09:00</time><span>Treino livre — todos</span></li>
+          </ul>
+        </li>
+        <li class="dia">
+          <h3>Domingo</h3>
+          <p class="dia-fechado">Fechado</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section class="secao contato" id="contato" aria-labelledby="contato-titulo">
+    <div class="secao-inner reveal">
+      <p class="secao-label">Fale conosco</p>
+      <h2 id="contato-titulo">Pronto para começar sua jornada?</h2>
+      <p class="cont-desc">Entre em contato pelo WhatsApp e agende sua aula experimental gratuita. Sem compromisso, sem taxa de matrícula na primeira visita.</p>
+      <dl class="contato-infos">
+        <div class="contato-item"><dt>Endereço</dt><dd>Rua das Flores, 123 — Centro</dd></div>
+        <div class="contato-item"><dt>WhatsApp</dt><dd>(11) 99999-9999 <small>(exemplo)</small></dd></div>
+        <div class="contato-item"><dt>Funcionamento</dt><dd>Segunda a sábado</dd></div>
+      </dl>
+      <a class="btn btn-primary" href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Quero%20agendar%20minha%20aula%20experimental%20gratuita." target="_blank" rel="noopener noreferrer">
+        <svg aria-hidden="true" focusable="false"><use href="#icone-whatsapp" /></svg>
+        Falar no WhatsApp<span class="sr-only"> (abre em nova aba)</span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>© 2025 <span>Bushido Karatê</span> — Todos os direitos reservados.</p>
+  <p class="aviso">Página demonstrativa desenvolvida por Johny Duarte. Os números, preços, horários, endereço e telefone são exemplos.</p>
+
+  <a class="float-wpp" href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Quero%20agendar%20minha%20aula%20experimental%20gratuita." target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp (abre em nova aba)">
+    <svg aria-hidden="true" focusable="false"><use href="#icone-whatsapp" /></svg>
+  </a>
+</footer>
+
+
+
+</body>
+</html>
